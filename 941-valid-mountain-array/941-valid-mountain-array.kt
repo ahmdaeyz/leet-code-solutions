@@ -31,9 +31,6 @@ fun validMountainArray(arr: IntArray): Boolean {
             }
         }
     }
-    periods.forEach {
-        println(it.toString())
-    }
     return periods.size == 2 && periods.first() && !periods.last();
 }
 }
