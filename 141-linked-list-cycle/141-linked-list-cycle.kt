@@ -10,13 +10,13 @@
 
 class Solution {
     fun hasCycle(head: ListNode?): Boolean {
-        val visitedNodes = hashMapOf<ListNode, Int>()
+        val visitedNodes = HashSet<ListNode>()
         var currentNode = head
         while (currentNode != null) {
-            if (visitedNodes.containsKey(currentNode)) {
+            if (visitedNodes.contains(currentNode)) {
                 return true
             } else {
-                visitedNodes[currentNode] = 1
+                visitedNodes.add(currentNode)
             }
             currentNode = currentNode.next
         }
