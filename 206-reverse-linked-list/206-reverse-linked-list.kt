@@ -10,18 +10,14 @@
 class Solution {
     
     fun reverseList(head: ListNode?): ListNode? {
-        val list = mutableListOf<ListNode?>()
-        var currentNode = head
-        while (currentNode != null) {
-            list.add(currentNode)
-            currentNode = currentNode.next
+        var currentReversed: ListNode? = null
+        var currentNode: ListNode? = head
+        while (currentNode!=null){
+            val nextNode = currentNode.next
+            currentNode.next = currentReversed
+            currentReversed = currentNode
+            currentNode = nextNode
         }
-        for (i in list.lastIndex downTo 1) {
-            list[i]?.next = list[i - 1]
-        }
-        if(list.isNotEmpty()){
-            list.first()?.next = null
-        }
-        return if (list.isEmpty()) null else list.last()
+        return  currentReversed
     }
 }
